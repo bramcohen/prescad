@@ -1,11 +1,12 @@
 constant assignments and shared modules go here
 !PRESCAD!
 x = abc();
+me = a(x);
 meep = a(x);
 y = q(x);
 // this is a comment
 qq = eggs;
 y = fg(y);
 z = r(y, x);
-w = r(z, meep);
+w = r(z, me, meep);
 spam(w);
