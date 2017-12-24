@@ -20,8 +20,8 @@ def tokens_of(lineno, line):
     endpos = 0
     while endpos < len(line):
         for p,re in token_re.iteritems():
-	    m = re.match(line, endpos)
-	    if m:
+    	    m = re.match(line, endpos)
+    	    if m:
                 tok = str(m.group(p))
                 endpos = m.end(p)
                 yield tok
