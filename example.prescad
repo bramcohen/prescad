@@ -1,0 +1,49 @@
+toffset = 5;
+soffset = 10;
+precision = 100;
+
+module trotate() union() {
+	children(1);
+	rotate(a=120, v=[0, 0, 1]) children(0);
+	rotate(a=240, v=[0, 0, 1]) children(0);
+}
+
+module midt() trotate() {
+	intersection() {
+		children(0);
+		children(1);
+	}
+	children(0);
+}
+
+module addt() rotate(a=-103.83616, v=[0, 1, 0]) midt() {
+	rotate(a=103.83616, v=[0, 1, 0]) children(0);
+	children(1);
+}
+
+module srotate() union() {
+	children(1);
+	rotate(a=90, v=[0, 0, 1]) children(0);
+	rotate(a=180, v=[0, 0, 1]) children(0);
+	rotate(a=270, v=[0, 0, 1]) children(0);
+}
+
+module adds() srotate() {
+	intersection() {
+		children(0);
+		children(1);
+	}
+	children(0);
+}
+
+!PRESCAD!
+
+tcut = translate([0, 0, 500 + toffset]) cube(1000, center=true);
+scut = translate([0, 0, 500 + soffset]) cube(1000, center=true);
+plate = cylinder(3, 110, 110, $fn = precision, center=true);
+output = union() {translate([0, 0, soffset]) plate; rotate(a=-103.83616, v=[0, 1, 0]) translate([0, 0, toffset]) plate;}
+output = addt() {output; tcut;}
+output = adds() {output; scut;}
+output = addt() {output; tcut;}
+output = difference() {sphere(r=90,$fn=precision); output;}
+output;

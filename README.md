@@ -1,9 +1,11 @@
 # prescad
 Openscad without the spaghetti
 
-Prescad is a 'language' which allows you to write openscad scripts in a coherent, maintainable way. I put 'language' in quotes beacuse it's really a preprocessor with the soul of a Perl script, but it works well in practice.
+Prescad is a 'language' which allows you to write openscad scripts in a coherent, maintainable way. I put 'language' in quotes because it's really a preprocessor with the soul of a Perl script, but it works well in practice.
 
 To use prescad, first write your .prescad file, then run prescad.py passing it the name of your file as an argument, and it will output a valid .scad file which you can then run openscad on.
+
+A nontrivial example of a prescad file is example.prescad. It finds all the pieces of a twisty puzzle (Rubik's-like) with unusual geometry (threefold symmetry on one axis, fourfold on another).
 
 The format of a .prescad file starts with beginning of the file will be copied verbatim into the beginning of the .scad file. That's where you should put all scalar constant assignments and reused modules. After that follows the fixed string !PRESCAD! followed by the meat of the prescad script.
 
