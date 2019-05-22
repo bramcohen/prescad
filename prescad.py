@@ -9,6 +9,8 @@ def replace_name_token(t,params_dict):
 token_re_list = [
     ('int', r'(?P<int>[-+]?(0[xX][\dA-Fa-f]+|0[0-7]*|\d+))'),
     ('float', r'(?P<float>[-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?)'),
+    ('strdbl', r'(?P<strdbl>["]([^"]|\")*["])'),
+    ('strquot', r"(?P<strquot>[']([^']|\')*['])"),
     ('ident', r'(?P<ident>[a-zA-Z_][a-zA-Z0-9_]*)'),
     ('op', r'(?P<op>[-+\*/=!%\^&\(\)\[\]\{\}:;<>,\.\#\$\@\?]+)'),
     ('ws', r'(?P<ws>[ \t\r\n]+)')
