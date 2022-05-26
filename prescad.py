@@ -21,7 +21,7 @@ token_re = dict([(x[0], re.compile(x[1])) for x in token_re_list])
 def tokens_of(lineno, line):
     endpos = 0
     while endpos < len(line):
-        for p,re in token_re.iteritems():
+        for p,re in token_re.items():
     	    m = re.match(line, endpos)
     	    if m:
                 tok = str(m.group(p))
@@ -49,7 +49,7 @@ def prescad(prefile):
                 break
         else:
             if x not in all_lines[-1]:
-                print "WARNING: unused parameter '" + x + "'"
+                print("WARNING: unused parameter '" + x + "'")
                 del all_lines[pos]
                 continue
         pos -= 1
@@ -71,7 +71,7 @@ def prescad(prefile):
             if p in right_lines[j]:
                 last = j
         if last is None:
-            print "WARNING: parameter redefined before use: '" + parameters[i] + "'"
+            print("WARNING: parameter redefined before use: '" + parameters[i] + "'")
             del parameters[i]
             del right_lines[i]
             del parameters_take[i]
